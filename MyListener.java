@@ -65,10 +65,10 @@ public class MyListener extends ListenerAdapter
             }
         }
         
-        // if(content.equals("!test"))
-        // {
-            // MessageChannel channel = event.getChannel();
-            // System.out.println(channel.getMessage() +"");
-        // }
+        if(content.equals("!test"))
+        {
+            MessageChannel channel = event.getChannel();
+            System.out.println(System.getProperty("java.vm.name") +"");
+        }
     }
 }

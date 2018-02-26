@@ -38,6 +38,8 @@ public class Bot
 {
     public FileCatcher FileHandler;
     public static TextChannel eliteTXChannel;
+    public static TextChannel eliteTXGeneral;
+    private static JDA jda;
     public static void main(String[] args) throws Exception
     {
         //Timer for automated update message
@@ -63,6 +65,7 @@ public class Bot
         try{
             JDA jda = builder.buildBlocking();
             eliteTXChannel = jda.getTextChannelById(STATIC.eliteChannelId);
+            eliteTXGeneral = jda.getTextChannelById(STATIC.eliteGeneralId);
             
             //check if set date is before or after startup
             if(date.after(date2)){
@@ -82,5 +85,9 @@ public class Bot
     //bullshit static because fuck OOP sometimes
     public static TextChannel getEliteTXChannel(){
         return eliteTXChannel;
+    }
+    
+    public static TextChannel getEliteTXGeneral(){
+        return eliteTXGeneral;
     }
 }

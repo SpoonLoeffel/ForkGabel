@@ -121,11 +121,14 @@ public class FileCatcher{
                     //System.out.println(starSystem.getId() + starSystem.getName());
                     if(starSystem.getMinorFactions().contains("minor_faction_id="+factionId+".0")){
                         found = true;
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                        Date date = new Date(starSystem.getUpdatedAt()*1000L);
+                        String lastUpdated = sdf.format(date) +"";
                         updateMessage = updateMessage + starSystem.getName() + "; Economy: " + starSystem.getPrimaryEconomy() + "; System State: " + starSystem.getSysState()+ ";\n" 
                         + "Influence: " + starSystem.getFactionInfluence(factionId) + "%; "
                         + "Faction State: "+ starSystem.getFactionState(factionId) 
                         + "; Hold Controle: " + this.controlingFactionCheck(factionId, starSystem.getControllingMinorFactionId())
-                        + ";\n\n";
+                        + "\n" + "Info Updated: " + lastUpdated + ";\n\n";
                         System.out.println("Systems:" + starSystem.getName());
                     }
                     //break;
