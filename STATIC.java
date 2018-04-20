@@ -8,22 +8,17 @@ import java.io.*;
 public class STATIC
 {
     // instance variables - replace the example below with your own
-    public static final String VERSION = "0.3.4";
-    public static final String token = "Insert Token Here";
-    public static final String path = "Insert Target Folder AND/OR File Name here";
+    public static final String VERSION = "0.4.1";
+    public static final String tokenPath = Insert path for txt file with token here;
+    public static final String path = Insert Target Folder AND/OR File Name here;
     public static final String fileUrl = "https://eddb.io/archive/v5/systems_populated.json";
-    public static final int ourFaction = 75448;
-    public static final String eliteChannel = "Channel Name Here";
-    public static final String eliteChannelId = "Channel ID Here";
-    public static final String eliteGeneralId = "Channel ID Here";
+    public static final int ourFaction = Faction ID here;
+	public static final String eliteChannel = Channel Name Here;
+    public static final String eliteChannelId = Channel ID Here;
+    public static final String eliteGeneralId = Channel ID Here;
+    
+    //debug
+    public static boolean dailyUpdate = true;
+    public static boolean autoUpdate = true;
+
 }
-
-
-/**
- * TODO
- * Make daily update time changable on the fly
- * make some of the STATIC variables read from file or something, but token needs to go away
- * clean up import list
- * figure out how to check if it already send the daily update today
- * find better solution to the json fix in minor factions
- */

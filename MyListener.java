@@ -35,7 +35,8 @@ public class MyListener extends ListenerAdapter
         if (event.getAuthor().isBot()) return;
         // We don't want to respond to other bot accounts, including ourself
         Message message = event.getMessage();
-        String content = message.getContentRaw(); 
+        String content = message.getContentRaw();
+        content = content.toLowerCase();
         // getContentRaw() is an atomic getter
         // getContentDisplay() is a lazy getter which modifies the content for e.g. console view (strip discord formatting)
         if (content.equals("!ping"))
@@ -70,5 +71,50 @@ public class MyListener extends ListenerAdapter
             MessageChannel channel = event.getChannel();
             System.out.println(System.getProperty("java.vm.name") +"");
         }
+        
+        if(content.equals("!debug autoupdate on")){
+            MessageChannel channel = event.getChannel();
+            String pChannel = channel + "";
+            String author = event.getAuthor()+"";
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")){
+                STATIC.autoUpdate = true;
+                System.out.println("autoUpdate: " + STATIC.autoUpdate);
+                channel.sendMessage("autoUpdate: " + STATIC.autoUpdate).queue();
+            }
+        }
+        
+        if(content.equals("!debug autoupdate off")){
+            MessageChannel channel = event.getChannel();
+            String pChannel = channel + "";
+            String author = event.getAuthor()+"";
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")){
+                STATIC.autoUpdate = false;
+                System.out.println("autoUpdate: " + STATIC.autoUpdate);
+                channel.sendMessage("autoUpdate: " + STATIC.autoUpdate).queue();
+            }
+        }
+        
+        if(content.equals("!debug dailyupdate on")){
+            MessageChannel channel = event.getChannel();
+            String pChannel = channel + "";
+            String author = event.getAuthor()+"";
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")){
+                STATIC.dailyUpdate = true;
+                System.out.println("dailyUpdate: " + STATIC.dailyUpdate);
+                channel.sendMessage("dailyUpdate: " + STATIC.dailyUpdate).queue();
+            }
+        }
+        
+        if(content.equals("!debug dailyupdate off")){
+            MessageChannel channel = event.getChannel();
+            String pChannel = channel + "";
+            String author = event.getAuthor()+"";
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")){
+                STATIC.dailyUpdate = false;
+                System.out.println("dailyUpdate: " + STATIC.dailyUpdate);
+                channel.sendMessage("dailyUpdate: " + STATIC.dailyUpdate).queue();
+            }
+        }
+        
     }
 }

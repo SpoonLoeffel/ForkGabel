@@ -42,6 +42,7 @@ public class Bot
     private static JDA jda;
     public static void main(String[] args) throws Exception
     {
+        
         //Timer for automated update message
         Timer timer = new Timer("EliteDailyFactionUpdate");
         Calendar date = Calendar.getInstance(TimeZone.getTimeZone("CET"));
@@ -56,7 +57,7 @@ public class Bot
         FileCatcher FileHandler = new FileCatcher();
         FileHandler.getStation(STATIC.path, STATIC.fileUrl);
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken(STATIC.token);
+        builder.setToken(FileHandler.getToken());
         builder.setAutoReconnect(true);
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setGame(Game.playing("Monitoring the Universe v. " + STATIC.VERSION));

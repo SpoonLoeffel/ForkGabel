@@ -22,10 +22,12 @@ public class DailyUpdater extends TimerTask
     }
     
     private void dailyUpdate(TextChannel pchannel){
-        MessageChannel channel = pchannel;
-        System.out.println("send message" + pchannel);
-        // FileHandler.updateDB(STATIC.path, STATIC.fileUrl);
-        String updateMessage = "Daily Faction Update:\n" + FileHandler.getInfo(STATIC.path, STATIC.ourFaction);
-        channel.sendMessage(updateMessage).queue();
+        if(STATIC.dailyUpdate == true){
+            MessageChannel channel = pchannel;
+            System.out.println("send message" + pchannel);
+            // FileHandler.updateDB(STATIC.path, STATIC.fileUrl);
+            String updateMessage = "Daily Faction Update:\n" + FileHandler.getInfo(STATIC.path, STATIC.ourFaction);
+            channel.sendMessage(updateMessage).queue();
+        }
     }
 }
