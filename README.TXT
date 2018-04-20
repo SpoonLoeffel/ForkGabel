@@ -5,7 +5,7 @@ Author: SpoonLoeffel
 
 Dependencies:
 JDA
-common-io
+Commons-io
 GSON
 
 -------------------------------------------
