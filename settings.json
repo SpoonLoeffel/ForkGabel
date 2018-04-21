@@ -1,6 +1,6 @@
 {
   "discordToken": "Discord Token Here",
-  "systemDBPath": "C:/Users/Administrator/AppData/Roaming/_ForkGabel/Data.json",
+  "systemDBPath": "Put save location for DB here",
   "systemDBFileURL": "https://eddb.io/archive/v5/systems_populated.json",
   "autoUpdate": true,
   "dailyUpdate": true
