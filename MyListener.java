@@ -50,8 +50,8 @@ public class MyListener extends ListenerAdapter
         {
             MessageChannel channel = event.getChannel();
             String pChannel = channel + "";
-            FileHandler.getStation(STATIC.path, STATIC.fileUrl);
-            String updateMessage = FileHandler.getInfo(STATIC.path, STATIC.ourFaction);
+            FileHandler.getStation(STATIC.systemDBPath, STATIC.systemDBFileUrl);
+            String updateMessage = FileHandler.getInfo(STATIC.systemDBPath, STATIC.ourFaction);
             channel.sendMessage(updateMessage).queue();
         }
         
@@ -62,7 +62,7 @@ public class MyListener extends ListenerAdapter
             String author = event.getAuthor()+"";
             if(author.equals("U:SpoonLoeffel(167343578857603072)")){
                 channel.sendMessage("refreshing database").queue();
-                FileHandler.updateDB(STATIC.path, STATIC.fileUrl);
+                FileHandler.updateDB(STATIC.systemDBPath, STATIC.systemDBFileUrl);
             }
         }
         
@@ -78,6 +78,8 @@ public class MyListener extends ListenerAdapter
             String author = event.getAuthor()+"";
             if(author.equals("U:SpoonLoeffel(167343578857603072)")){
                 STATIC.autoUpdate = true;
+                Config.getInstance().autoUpdate = true;
+                Config.getInstance().toFile(STATIC.settingsPath);
                 System.out.println("autoUpdate: " + STATIC.autoUpdate);
                 channel.sendMessage("autoUpdate: " + STATIC.autoUpdate).queue();
             }
@@ -89,6 +91,8 @@ public class MyListener extends ListenerAdapter
             String author = event.getAuthor()+"";
             if(author.equals("U:SpoonLoeffel(167343578857603072)")){
                 STATIC.autoUpdate = false;
+                Config.getInstance().autoUpdate = false;
+                Config.getInstance().toFile(STATIC.settingsPath);
                 System.out.println("autoUpdate: " + STATIC.autoUpdate);
                 channel.sendMessage("autoUpdate: " + STATIC.autoUpdate).queue();
             }
@@ -100,6 +104,8 @@ public class MyListener extends ListenerAdapter
             String author = event.getAuthor()+"";
             if(author.equals("U:SpoonLoeffel(167343578857603072)")){
                 STATIC.dailyUpdate = true;
+                Config.getInstance().dailyUpdate = true;
+                Config.getInstance().toFile(STATIC.settingsPath);
                 System.out.println("dailyUpdate: " + STATIC.dailyUpdate);
                 channel.sendMessage("dailyUpdate: " + STATIC.dailyUpdate).queue();
             }
@@ -111,6 +117,8 @@ public class MyListener extends ListenerAdapter
             String author = event.getAuthor()+"";
             if(author.equals("U:SpoonLoeffel(167343578857603072)")){
                 STATIC.dailyUpdate = false;
+                Config.getInstance().dailyUpdate = false;
+                Config.getInstance().toFile(STATIC.settingsPath);
                 System.out.println("dailyUpdate: " + STATIC.dailyUpdate);
                 channel.sendMessage("dailyUpdate: " + STATIC.dailyUpdate).queue();
             }

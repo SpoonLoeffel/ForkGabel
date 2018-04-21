@@ -12,7 +12,7 @@ public class DailyUpdater extends TimerTask
     // instance variables - replace the example below with your own
     FileCatcher FileHandler = new FileCatcher();
     public void run(){
-        FileHandler.updateDB(STATIC.path, STATIC.fileUrl);
+        FileHandler.updateDB(STATIC.systemDBPath, STATIC.systemDBFileUrl);
         this.dailyUpdate(Bot.getEliteTXChannel());
         try{
             Thread.sleep(100);
@@ -26,7 +26,7 @@ public class DailyUpdater extends TimerTask
             MessageChannel channel = pchannel;
             System.out.println("send message" + pchannel);
             // FileHandler.updateDB(STATIC.path, STATIC.fileUrl);
-            String updateMessage = "Daily Faction Update:\n" + FileHandler.getInfo(STATIC.path, STATIC.ourFaction);
+            String updateMessage = "Daily Faction Update:\n" + FileHandler.getInfo(STATIC.systemDBPath, STATIC.ourFaction);
             channel.sendMessage(updateMessage).queue();
         }
     }

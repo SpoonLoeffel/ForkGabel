@@ -8,17 +8,18 @@ import java.io.*;
 public class STATIC
 {
     // instance variables - replace the example below with your own
-    public static final String VERSION = "0.4.1";
-    public static final String tokenPath = Insert path for txt file with token here;
-    public static final String path = Insert Target Folder AND/OR File Name here;
-    public static final String fileUrl = "https://eddb.io/archive/v5/systems_populated.json";
-    public static final int ourFaction = Faction ID here;
-	public static final String eliteChannel = Channel Name Here;
-    public static final String eliteChannelId = Channel ID Here;
-    public static final String eliteGeneralId = Channel ID Here;
+    public static final String VERSION = "0.4.6";
+    public static String discordToken = "123";
+    public static final String settingsPath = "settings.json";
+    public static String systemDBPath = "C:/Users/Administrator/AppData/Roaming/_ForkGabel/Data.json";
+    public static String systemDBFileUrl = "https://eddb.io/archive/v5/systems_populated.json";
+    public static int ourFaction = 75448;
+    public static String eliteChannel = "TC:daily-faction-updates(408061983917867024)";
+    public static String eliteChannelId = "408061983917867024";
+    public static String eliteGeneralId = "231603269015699456";
     
     //debug
-    public static boolean dailyUpdate = true;
-    public static boolean autoUpdate = true;
+    public static boolean dailyUpdate = false;
+    public static boolean autoUpdate = false;
 
 }

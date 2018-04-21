@@ -42,7 +42,14 @@ public class Bot
     private static JDA jda;
     public static void main(String[] args) throws Exception
     {
-        
+        //load the Settings
+        Config.load(STATIC.settingsPath);
+        STATIC.discordToken = Config.getInstance().discordToken;
+        STATIC.systemDBPath = Config.getInstance().systemDBPath;
+        STATIC.systemDBFileUrl = Config.getInstance().systemDBFileURL;
+        STATIC.autoUpdate = Config.getInstance().autoUpdate;
+        STATIC.dailyUpdate = Config.getInstance().dailyUpdate;
+        Config.getInstance().toFile(STATIC.settingsPath);
         //Timer for automated update message
         Timer timer = new Timer("EliteDailyFactionUpdate");
         Calendar date = Calendar.getInstance(TimeZone.getTimeZone("CET"));
@@ -55,9 +62,9 @@ public class Bot
         
         //the stuff that makes it go tick
         FileCatcher FileHandler = new FileCatcher();
-        FileHandler.getStation(STATIC.path, STATIC.fileUrl);
+        FileHandler.getStation(STATIC.systemDBPath, STATIC.systemDBFileUrl);
         JDABuilder builder = new JDABuilder(AccountType.BOT);
-        builder.setToken(FileHandler.getToken());
+        builder.setToken(STATIC.discordToken);
         builder.setAutoReconnect(true);
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setGame(Game.playing("Monitoring the Universe v. " + STATIC.VERSION));
