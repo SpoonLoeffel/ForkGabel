@@ -164,38 +164,6 @@ public class FileCatcher{
         }
     }
     
-    //get the token
-    // public static void loadSettings(String settingsPath){
-        // String fileName = settingsPath;
-        // String line = null;
-        // try{
-            // FileReader fileReader = new FileReader(fileName);
-            // BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
-            // while((line = bufferedReader.readLine())!=null){
-                // if(line.contains("DiscordToken:")){
-                    // line = line.replace("DiscordToken:", "");
-                    // line = line.trim();
-                    // STATIC.token = line;
-                // }
-                // else if(line.contains("DiscordToken:")){
-                    // line = line.replace("DiscordToken:", "");
-                    // line = line.trim();
-                    // STATIC.token = line;
-                // }
-                // else if(
-            // }
-            // bufferedReader.close();
-        // }
-        // catch(FileNotFoundException ex) {
-            // System.out.println("Unable to open file '" + fileName + "'");                
-        // }
-        // catch(IOException ex) {
-            // System.out.println("Error reading file '" + fileName + "'");                  
-            // // Or we could just do this: 
-            // // ex.printStackTrace();
-        // }
-    // }
 }
    
 

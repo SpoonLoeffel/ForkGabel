@@ -46,7 +46,7 @@ public class MyListener extends ListenerAdapter
             channel.sendMessage("Pong!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
         }
         
-        if(content.equals("!FactionCheck"))
+        if(content.equals("!factioncheck"))
         {
             MessageChannel channel = event.getChannel();
             String pChannel = channel + "";
@@ -55,7 +55,7 @@ public class MyListener extends ListenerAdapter
             channel.sendMessage(updateMessage).queue();
         }
         
-        if(content.equals("!updateDB"))
+        if(content.equals("!updatedb"))
         {
             MessageChannel channel = event.getChannel();
             String pChannel = channel + "";
@@ -124,5 +124,34 @@ public class MyListener extends ListenerAdapter
             }
         }
         
+        if(content.equals("!debugmode off")){
+            MessageChannel channel = event.getChannel();
+            String pChannel = channel + "";
+            String author = event.getAuthor()+"";
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")){
+                STATIC.dailyUpdate = true;
+                STATIC.autoUpdate = true;
+                Config.getInstance().autoUpdate = true;
+                Config.getInstance().dailyUpdate = true;
+                Config.getInstance().toFile(STATIC.settingsPath);
+                System.out.println("Debugmode: " + STATIC.dailyUpdate);
+                channel.sendMessage("Debugmode: " + STATIC.dailyUpdate).queue();
+            }
+        }
+
+        if(content.equals("!debugmode on")){
+            MessageChannel channel = event.getChannel();
+            String pChannel = channel + "";
+            String author = event.getAuthor()+"";
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")){
+                STATIC.dailyUpdate = false;
+                STATIC.autoUpdate = false;
+                Config.getInstance().autoUpdate = false;
+                Config.getInstance().dailyUpdate = false;
+                Config.getInstance().toFile(STATIC.settingsPath);
+                System.out.println("Debugmode: " + STATIC.dailyUpdate);
+                channel.sendMessage("Debugmode: " + STATIC.dailyUpdate).queue();
+            }
+        }
     }
 }

@@ -68,6 +68,7 @@ public class Bot
         builder.setAutoReconnect(true);
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setGame(Game.playing("Monitoring the Universe v. " + STATIC.VERSION));
+        //builder.setGame(Game.playing("Under Construction"));
         System.out.println("Version:" + STATIC.VERSION);
         builder.addEventListener(new MyListener());
         try{
