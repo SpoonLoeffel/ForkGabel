@@ -25,6 +25,8 @@ public class Config {
     public String discordToken;
     public String systemDBPath;
     public String systemDBFileURL;
+    public int dailyUpdateHours;
+    public int dailyUpdateMinutes;
     public boolean autoUpdate;
     public boolean dailyUpdate;
 
@@ -34,6 +36,8 @@ public class Config {
         this.discordToken = "discord token";
         this.systemDBPath = "C:/Users/Administrator/AppData/Roaming/_ForkGabel/Data.json";
         this.systemDBFileURL = "https://eddb.io/archive/v5/systems_populated.json";
+        this.dailyUpdateHours = 21;
+        this.dailyUpdateMinutes = 0;
         this.autoUpdate = false;
         this.dailyUpdate = false;
     }

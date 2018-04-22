@@ -70,6 +70,7 @@ public class MyListener extends ListenerAdapter
         {
             MessageChannel channel = event.getChannel();
             System.out.println(System.getProperty("java.vm.name") +"");
+          
         }
         
         if(content.equals("!debug autoupdate on")){
@@ -98,11 +99,13 @@ public class MyListener extends ListenerAdapter
             }
         }
         
-        if(content.equals("!debug dailyupdate on")){
+        
+        //turns dailyupdate on
+        if(content.equals("!dailyupdate on")){
             MessageChannel channel = event.getChannel();
             String pChannel = channel + "";
             String author = event.getAuthor()+"";
-            if(author.equals("U:SpoonLoeffel(167343578857603072)")){
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")||author.equals("U:HellsMasterKight(205571855648555008)")){
                 STATIC.dailyUpdate = true;
                 Config.getInstance().dailyUpdate = true;
                 Config.getInstance().toFile(STATIC.settingsPath);
@@ -111,11 +114,13 @@ public class MyListener extends ListenerAdapter
             }
         }
         
-        if(content.equals("!debug dailyupdate off")){
+        
+        //turns dailyupdate off
+        if(content.equals("!dailyupdate off")){
             MessageChannel channel = event.getChannel();
             String pChannel = channel + "";
             String author = event.getAuthor()+"";
-            if(author.equals("U:SpoonLoeffel(167343578857603072)")){
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")||author.equals("U:HellsMasterKight(205571855648555008)")){
                 STATIC.dailyUpdate = false;
                 Config.getInstance().dailyUpdate = false;
                 Config.getInstance().toFile(STATIC.settingsPath);
@@ -124,6 +129,8 @@ public class MyListener extends ListenerAdapter
             }
         }
         
+        
+        //turns debug mode off (dailyupdate on, autoupdate on)
         if(content.equals("!debugmode off")){
             MessageChannel channel = event.getChannel();
             String pChannel = channel + "";
@@ -138,7 +145,9 @@ public class MyListener extends ListenerAdapter
                 channel.sendMessage("Debugmode: " + STATIC.dailyUpdate).queue();
             }
         }
-
+        
+        
+        //turns debug mode on (dailyupdate off, autoupdate off)
         if(content.equals("!debugmode on")){
             MessageChannel channel = event.getChannel();
             String pChannel = channel + "";
@@ -151,6 +160,56 @@ public class MyListener extends ListenerAdapter
                 Config.getInstance().toFile(STATIC.settingsPath);
                 System.out.println("Debugmode: " + STATIC.dailyUpdate);
                 channel.sendMessage("Debugmode: " + STATIC.dailyUpdate).queue();
+            }
+        }
+        
+        //set hours for dailyupdate
+        if(content.startsWith("!dailyupdate hours")){
+            MessageChannel channel = event.getChannel();
+            String pChannel = channel + "";
+            String author = event.getAuthor() + "";
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")||author.equals("U:HellsMasterKight(205571855648555008)")){
+                content = content.replace("!dailyupdate hours ","");
+                content = content.trim();
+                int pHour = Integer.parseInt(content);
+                if(pHour >= 0 || pHour <= 24){
+                    Config.getInstance().dailyUpdateHours = pHour;
+                    Config.getInstance().toFile(STATIC.settingsPath);
+                    String time =  Config.getInstance().dailyUpdateHours + ":";
+                    if(Config.getInstance().dailyUpdateMinutes<10){
+                        time = time +"0"+Config.getInstance().dailyUpdateMinutes;
+                    }else{
+                        time = time + Config.getInstance().dailyUpdateMinutes;
+                    }
+                    channel.sendMessage("DailyUpdate at: " + time).queue();
+                }else{
+                    channel.sendMessage("Error: Set time is not inbetween acceptable parameter").queue();
+                }
+            }
+        }
+        
+        //set minutes for dailyupdate
+        if(content.startsWith("!dailyupdate minutes")){
+            MessageChannel channel = event.getChannel();
+            String pChannel = channel + "";
+            String author = event.getAuthor() + "";
+            if(author.equals("U:SpoonLoeffel(167343578857603072)")||author.equals("U:HellsMasterKight(205571855648555008)")){    
+                content = content.replace("!dailyupdate minutes ","");
+                content = content.trim();
+                int pMinute = Integer.parseInt(content);
+                if(pMinute >= 0 || pMinute <= 59){
+                    Config.getInstance().dailyUpdateMinutes = pMinute;
+                    Config.getInstance().toFile(STATIC.settingsPath);
+                    String time =  Config.getInstance().dailyUpdateHours + ":";
+                    if(Config.getInstance().dailyUpdateMinutes<10){
+                        time = time +"0"+Config.getInstance().dailyUpdateMinutes;
+                    }else{
+                        time = time + Config.getInstance().dailyUpdateMinutes;
+                    }
+                    channel.sendMessage("DailyUpdate at: " + time).queue();
+                }else{
+                    channel.sendMessage("Error: Set time is not inbetween acceptable parameter").queue();
+                }  
             }
         }
     }

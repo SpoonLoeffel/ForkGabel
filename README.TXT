@@ -1,4 +1,4 @@
-Discordbot version 0.4.8
+Discordbot version 0.5.0
 Author: SpoonLoeffel
 
 -------------------------------------------
@@ -17,3 +17,15 @@ PONG
 
 !FactionCheck
 Checks the Faction Status
+
+!DailyUpdate on/off
+Turns daily updates on/off
+
+!DailyUpdate hours <hours>
+Sets time for DailyUpdate
+
+!DailyUpdate Minutes <Minutes>
+Sets Minutes for DailyUpdate
+
+
+

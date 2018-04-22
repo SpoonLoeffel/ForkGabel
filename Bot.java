@@ -40,6 +40,11 @@ public class Bot
     public static TextChannel eliteTXChannel;
     public static TextChannel eliteTXGeneral;
     private static JDA jda;
+    private static Timer timer;
+    private static Calendar date;
+    private static Calendar date2;
+
+    //private 
     public static void main(String[] args) throws Exception
     {
         //load the Settings
@@ -51,13 +56,14 @@ public class Bot
         STATIC.dailyUpdate = Config.getInstance().dailyUpdate;
         Config.getInstance().toFile(STATIC.settingsPath);
         //Timer for automated update message
+
         Timer timer = new Timer("EliteDailyFactionUpdate");
         Calendar date = Calendar.getInstance(TimeZone.getTimeZone("CET"));
         //make update time variable later
-        date.set(Calendar.HOUR_OF_DAY, 21);
-        date.set(Calendar.MINUTE, 0);
-        date.set(Calendar.SECOND, 0);
-        date.set(Calendar.MILLISECOND, 0);
+        // date.set(Calendar.HOUR_OF_DAY, 21);
+        // date.set(Calendar.MINUTE, 0);
+        // date.set(Calendar.SECOND, 0);
+        // date.set(Calendar.MILLISECOND, 0);
         Calendar date2 = Calendar.getInstance(TimeZone.getTimeZone("CET"));
         
         //the stuff that makes it go tick
@@ -76,12 +82,14 @@ public class Bot
             eliteTXChannel = jda.getTextChannelById(STATIC.eliteChannelId);
             eliteTXGeneral = jda.getTextChannelById(STATIC.eliteGeneralId);
             
-            //check if set date is before or after startup
+            // check if set date is before or after startup
             if(date.before(date2)){
                 date.add(Calendar.DAY_OF_YEAR,1);
                 new DailyUpdater();
+                System.out.println("tomorrow");
             }
             timer.schedule(new DailyUpdater(), date.getTime(), 1000 * 60 * 60 * 24);
+            
         }catch (LoginException e){
             e.printStackTrace();
         }catch(InterruptedException e){
@@ -92,6 +100,7 @@ public class Bot
     }
     
     //bullshit static because fuck OOP sometimes
+    
     public static TextChannel getEliteTXChannel(){
         return eliteTXChannel;
     }
