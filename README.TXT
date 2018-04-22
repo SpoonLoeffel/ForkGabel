@@ -1,4 +1,4 @@
-Discordbot version 0.4.7
+Discordbot version 0.4.8
 Author: SpoonLoeffel
 
 -------------------------------------------
