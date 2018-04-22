@@ -77,7 +77,7 @@ public class Bot
             eliteTXGeneral = jda.getTextChannelById(STATIC.eliteGeneralId);
             
             //check if set date is before or after startup
-            if(date.after(date2)){
+            if(date.before(date2)){
                 date.add(Calendar.DAY_OF_YEAR,1);
                 new DailyUpdater();
             }
