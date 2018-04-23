@@ -60,10 +60,10 @@ public class Bot
         Timer timer = new Timer("EliteDailyFactionUpdate");
         Calendar date = Calendar.getInstance(TimeZone.getTimeZone("CET"));
         //make update time variable later
-        // date.set(Calendar.HOUR_OF_DAY, 21);
-        // date.set(Calendar.MINUTE, 0);
-        // date.set(Calendar.SECOND, 0);
-        // date.set(Calendar.MILLISECOND, 0);
+        date.set(Calendar.HOUR_OF_DAY, Config.getInstance().dailyUpdateHours);
+        date.set(Calendar.MINUTE, Config.getInstance().dailyUpdateMinutes);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
         Calendar date2 = Calendar.getInstance(TimeZone.getTimeZone("CET"));
         
         //the stuff that makes it go tick
