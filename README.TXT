@@ -1,3 +1,10 @@
+No longer supported
+New Bot with similar functionality, based on python, is being build here:
+https://github.com/SpoonLoeffel/InterstellarMonitoringSystem/issues
+
+
+==============================0
+
 Discordbot version 0.5.1
 Author: SpoonLoeffel
 
