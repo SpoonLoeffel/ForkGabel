@@ -1,6 +1,6 @@
 No longer supported
 New Bot with similar functionality, based on python, is being build here:
-https://github.com/SpoonLoeffel/InterstellarMonitoringSystem/issues
+https://github.com/SpoonLoeffel/InterstellarMonitoringSystem
 
 
 ==============================0
